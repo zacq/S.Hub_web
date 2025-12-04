@@ -1,762 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafishaHub – Premium Car Care & Auto Detailing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-logo img {
-            height: 45px;
-            width: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .nav-logo span {
-            font-weight: 700;
-            font-size: 1.4em;
-            background: linear-gradient(135deg, #3DB54A 0%, #0EA5E9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #3DB54A 0%, #0EA5E9 100%);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: #3DB54A;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu-btn span {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        header {
-            background: linear-gradient(135deg, #3DB54A 0%, #0EA5E9 100%);
-            color: white;
-            padding: 160px 20px 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
-            background-size: 60px 60px;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        header h1 {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-            position: relative;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        header > p {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            opacity: 0.95;
-            position: relative;
-        }
-
-        .tagline {
-            font-style: italic;
-            margin: 25px 0;
-            font-size: 1.2em;
-            position: relative;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: white;
-            color: #3DB54A;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-top: 20px;
-            position: relative;
-            font-size: 1.1em;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .location-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            color: #3DB54A;
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-        }
-
-        section h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #3DB54A 0%, #0EA5E9 100%);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        .about-section {
-            background-color: #f8fafc;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        .about-text p {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .stats-row {
-            display: flex;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #3DB54A 0%, #0EA5E9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        /* Services */
-        .services-section {
-            background: white;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #eee;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-        }
-
-        .service-card h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        .service-card p {
-            color: #666;
-            font-size: 0.95em;
-        }
-
-        /* Gallery */
-        .gallery-section {
-            background: #f8fafc;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 50px;
-        }
-
-        .gallery-item {
-            background: linear-gradient(135deg, #3DB54A 0%, #0EA5E9 100%);
-            height: 250px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-item::before {
-            content: '📷 Coming Soon';
-            font-size: 1.2em;
-        }
-
-        /* Why Choose Us */
-        .why-section {
-            background: white;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .why-card {
-            text-align: center;
-            padding: 40px 25px;
-            background: linear-gradient(135deg, rgba(61, 181, 74, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
-            border-radius: 15px;
-            border: 2px solid transparent;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .why-card:hover {
-            border-color: #3DB54A;
-            transform: translateY(-5px);
-        }
-
-        .why-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #3DB54A 0%, #0EA5E9 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.8em;
-        }
-
-        .why-card h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .why-card p {
-            color: #666;
-            font-size: 0.95em;
-        }
-
-        /* Contact/Booking */
-        .contact-section {
-            background: linear-gradient(135deg, #3DB54A 0%, #0EA5E9 100%);
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .contact-section h2 {
-            color: white;
-        }
-
-        .contact-section h2::after {
-            background: rgba(255,255,255,0.5);
-        }
-
-        .contact-info {
-            margin-top: 40px;
-        }
-
-        .contact-item {
-            font-size: 1.3em;
-            margin: 20px 0;
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-            border-bottom: 2px solid rgba(255,255,255,0.5);
-            transition: border-color 0.3s;
-        }
-
-        .contact-item a:hover {
-            border-color: white;
-        }
-
-        .whatsapp-btn {
-            display: inline-block;
-            background: white;
-            color: #25D366;
-            padding: 18px 50px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2em;
-            margin-top: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1a1a2e;
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo img {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .footer-logo span {
-            font-size: 1.5em;
-            font-weight: 700;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #aaa;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #3DB54A;
-        }
-
-        .copyright {
-            color: #666;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            header {
-                padding: 140px 20px 80px;
-            }
-
-            header h1 {
-                font-size: 2.2em;
-            }
-
-            header > p {
-                font-size: 1em;
-            }
-
-            section {
-                padding: 60px 15px;
-            }
-
-            section h2 {
-                font-size: 1.8em;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .stats-row {
-                justify-content: center;
-            }
-
-            .stat-number {
-                font-size: 2em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafishaHub | Auto Intelligence & Protection Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-logo">
-            <img src="logo.jpeg" alt="SafishaHub Logo">
-            <span>SafishaHub</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#why-us">Why Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="mobile-menu-btn" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+<body class="bg-gray-50 text-gray-800">
 
-    <!-- Hero Section -->
-    <header id="home">
-        <div class="location-badge">📍 Lena Moi Street, Nakuru, Kenya</div>
-        <h1>SafishaHub</h1>
-        <p>Premium Car Care & Auto Detailing Services</p>
-        <p class="tagline">"We bring back the shine — inside and out."</p>
-        <a href="https://wa.me/254111872279" class="cta-button">📱 Book via WhatsApp</a>
-    </header>
+  <!-- NAVBAR -->
+  <nav class="bg-white shadow fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-emerald-600">SafishaHub</h1>
+      <a href="https://wa.me/254111872279" class="bg-emerald-600 text-white px-5 py-2 rounded-xl">Book on WhatsApp</a>
+    </div>
+  </nav>
 
-    <!-- About Us -->
-    <section id="about" class="about-section">
-        <h2>About Us</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>SafishaHub provides professional auto detailing services designed to restore, protect, and elevate the look of your vehicle.</p>
-                <p>With modern equipment, trained technicians, and a customer-first approach, we deliver showroom-level results every time. Your car deserves the best care, and we're here to provide it.</p>
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Cars Detailed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Happy Clients</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image">
-                <img src="logo.jpeg" alt="SafishaHub Team at Work">
-            </div>
+  <!-- HERO -->
+  <section class="pt-28 pb-20 bg-gradient-to-br from-emerald-600 to-blue-500 text-white text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-4">More Than a Carwash — We Diagnose, Protect & Guide Vehicle Decisions</h2>
+      <p class="text-lg mb-6">SafishaHub is an Auto Intelligence & Protection Hub using expert inspection and AI-powered guidance to detect vehicle issues before they become expensive.</p>
+      <p class="font-semibold mb-6">📍 Lena Moi Street, Nakuru</p>
+      <a href="https://wa.me/254111872279" class="bg-white text-emerald-600 px-6 py-3 rounded-xl font-semibold">Start on WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-4">About SafishaHub</h3>
+      <p class="text-lg text-gray-600">We don't just clean vehicles — we diagnose, protect, and guide vehicle decisions. SafishaHub blends professional auto care, diagnostics, and long-term advisory so you can protect your investment and make smarter automotive decisions.</p>
+    </div>
+  </section>
+
+  <!-- CORE SERVICES -->
+  <section class="py-20 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <h3 class="text-3xl font-bold text-center mb-12">Core Diagnostic Entry Services</h3>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- PPF -->
+        <div class="bg-white p-6 rounded-2xl shadow">
+          <div class="h-40 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">PPF Image</div>
+          <h4 class="text-xl font-bold mb-2">Paint Protection Film (PPF)</h4>
+          <p class="text-gray-600 mb-3">A transparent protective film that shields your paint from scratches, stone chips, UV damage, and fading.</p>
+          <ul class="text-sm text-gray-600 list-disc pl-4 space-y-1">
+            <li>Preserves resale value</li>
+            <li>Prevents repainting costs</li>
+            <li>Reveals hidden surface damage</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- Our Services -->
-    <section id="services" class="services-section">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>Full Interior Deep Cleaning</h3>
-                <p>Complete interior restoration including dashboard, seats, carpets, and all surfaces.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🚗</div>
-                <h3>Exterior Wash & Wax</h3>
-                <p>Premium hand wash with high-quality wax coating for lasting protection and shine.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🔧</div>
-                <h3>Engine Bay Cleaning</h3>
-                <p>Safe and thorough engine compartment cleaning and degreasing.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💡</div>
-                <h3>Headlight Restoration</h3>
-                <p>Restore clarity and brightness to foggy, yellowed headlights.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🛋️</div>
-                <h3>Upholstery Shampooing</h3>
-                <p>Deep cleaning of fabric seats, carpets, and floor mats.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🛡️</div>
-                <h3>Ceramic Coating</h3>
-                <p>Long-lasting paint protection with premium ceramic coating.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🚙</div>
-                <h3>Mobile Car Wash</h3>
-                <p>We come to you! Professional detailing at your home or office.</p>
-            </div>
+        <!-- TINT -->
+        <div class="bg-white p-6 rounded-2xl shadow">
+          <div class="h-40 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">Tint Image</div>
+          <h4 class="text-xl font-bold mb-2">Professional Window Tinting</h4>
+          <p class="text-gray-600 mb-3">High-performance tint films for heat reduction, UV protection, privacy, and compliance.</p>
+          <ul class="text-sm text-gray-600 list-disc pl-4 space-y-1">
+            <li>UV & heat control</li>
+            <li>Security & comfort</li>
+            <li>Glass & legality checks</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- Gallery -->
-    <section id="gallery" class="gallery-section">
-        <h2>Our Work</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
+        <!-- DETAILING -->
+        <div class="bg-white p-6 rounded-2xl shadow">
+          <div class="h-40 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">Detailing Image</div>
+          <h4 class="text-xl font-bold mb-2">Professional Car Detailing</h4>
+          <p class="text-gray-600 mb-3">Deep interior & exterior restoration that doubles as a full vehicle health check.</p>
+          <ul class="text-sm text-gray-600 list-disc pl-4 space-y-1">
+            <li>Exposes hidden faults</li>
+            <li>Preserves interior condition</li>
+            <li>Detects accident & water damage</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Why Choose SafishaHub -->
-    <section id="why-us" class="why-section">
-        <h2>Why Choose SafishaHub</h2>
-        <div class="why-grid">
-            <div class="why-card">
-                <div class="why-icon">⭐</div>
-                <h3>Premium Products</h3>
-                <p>We use only top-quality detailing products for the best results.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">👨‍🔧</div>
-                <h3>Skilled Detailers</h3>
-                <p>Our trained team ensures meticulous attention to every detail.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">⚡</div>
-                <h3>Fast Turnaround</h3>
-                <p>Quick service without compromising on quality.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">💰</div>
-                <h3>Affordable Pricing</h3>
-                <p>Competitive rates with packages for every budget.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">🚐</div>
-                <h3>Mobile Service</h3>
-                <p>We come to your location for ultimate convenience.</p>
-            </div>
-        </div>
-    </section>
+  <!-- WHY US -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-6">Why SafishaHub?</h3>
+      <div class="grid md:grid-cols-3 gap-8 text-left">
+        <div>✅ Early vehicle problem detection</div>
+        <div>✅ Human inspection + AI intelligence</div>
+        <div>✅ Predictive maintenance guidance</div>
+        <div>✅ Insurance & compliance awareness</div>
+        <div>✅ Parts sourcing & disposal connections</div>
+        <div>✅ Vehicle value protection</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact/Booking Section -->
-    <section id="contact" class="contact-section">
-        <h2>Get In Touch</h2>
-        <p style="font-size: 1.2em; opacity: 0.9; max-width: 600px; margin: 0 auto;">Ready to give your car the premium treatment it deserves? Contact us today!</p>
-        <div class="contact-info">
-            <div class="contact-item">📍 Lena Moi Street, Nakuru, Kenya</div>
-            <div class="contact-item">📞 <a href="tel:+254111872279">+254 111 872 279</a></div>
-        </div>
-        <a href="https://wa.me/254111872279" class="whatsapp-btn">💬 Chat on WhatsApp</a>
-    </section>
+  <!-- FUTURE SERVICES -->
+  <section class="py-20 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-6">Future Connection Services</h3>
+      <p class="text-gray-600 mb-6">SafishaHub is building Kenya's most connected automotive solutions hub.</p>
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div>Vinyl Wraps & Colored PPF</div>
+        <div>Parts Import & Sourcing</div>
+        <div>Dent & Body Repair</div>
+        <div>Fleet Branding</div>
+        <div>Insurance Advisory</div>
+        <div>Vehicle Disposal & Resale</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-logo">
-            <img src="logo.jpeg" alt="SafishaHub">
-            <span>SafishaHub</span>
-        </div>
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 SafishaHub – All Rights Reserved.</p>
-        </div>
-    </footer>
+  <!-- CTA -->
+  <section class="py-20 bg-emerald-600 text-white text-center">
+    <h3 class="text-3xl font-bold mb-4">Start With a Smart Inspection</h3>
+    <p class="mb-6">Before you repaint, repair, sell, or upgrade — start at SafishaHub.</p>
+    <a href="https://wa.me/254111872279" class="bg-white text-emerald-600 px-6 py-3 rounded-xl font-semibold">Book on WhatsApp</a>
+  </section>
 
-    <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-6 text-center">
+    <p>© 2025 SafishaHub | Lena Moi Street, Nakuru</p>
+    <p>WhatsApp: +254 111 872 279</p>
+  </footer>
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
-            } else {
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            }
-        });
-    </script>
 </body>
 </html>
