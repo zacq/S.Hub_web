@@ -5,31 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SafishaHub | Auto Intelligence & Protection Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'safisha-green': '#4ADE80',
+            'safisha-lime': '#22C55E',
+            'safisha-blue': '#0EA5E9',
+            'safisha-dark': '#0F172A',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-text {
+      background: linear-gradient(135deg, #4ADE80 0%, #0EA5E9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- NAVBAR -->
-  <nav class="bg-white shadow fixed w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-emerald-600">SafishaHub</h1>
-      <a href="https://wa.me/254111872279" class="bg-emerald-600 text-white px-5 py-2 rounded-xl">Book on WhatsApp</a>
+  <nav class="bg-white/95 backdrop-blur-sm shadow-md fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-3">
+        <img src="logo.png" alt="SafishaHub Logo" class="h-12 w-auto">
+      </a>
+      <a href="https://wa.me/254111872279" class="bg-gradient-to-r from-safisha-green to-safisha-blue text-white px-5 py-2 rounded-xl font-semibold hover:shadow-lg transition-all">Book on WhatsApp</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="pt-28 pb-20 bg-gradient-to-br from-emerald-600 to-blue-500 text-white text-center">
+  <section class="pt-28 pb-20 bg-gradient-to-br from-safisha-green via-safisha-lime to-safisha-blue text-white text-center">
     <div class="max-w-4xl mx-auto px-6">
+      <img src="logo.png" alt="SafishaHub" class="h-32 mx-auto mb-6 drop-shadow-2xl">
       <h2 class="text-4xl font-bold mb-4">More Than a Carwash — We Diagnose, Protect & Guide Vehicle Decisions</h2>
-      <p class="text-lg mb-6">SafishaHub is an Auto Intelligence & Protection Hub using expert inspection and AI-powered guidance to detect vehicle issues before they become expensive.</p>
+      <p class="text-lg mb-6 opacity-95">SafishaHub is an Auto Intelligence & Protection Hub using expert inspection and AI-powered guidance to detect vehicle issues before they become expensive.</p>
       <p class="font-semibold mb-6">📍 Lena Moi Street, Nakuru</p>
-      <a href="https://wa.me/254111872279" class="bg-white text-emerald-600 px-6 py-3 rounded-xl font-semibold">Start on WhatsApp</a>
+      <a href="https://wa.me/254111872279" class="bg-white text-safisha-green px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition-all inline-block">Start on WhatsApp</a>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section class="py-16 bg-white">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-4">About SafishaHub</h3>
+      <h3 class="text-3xl font-bold mb-4"><span class="gradient-text">About SafishaHub</span></h3>
       <p class="text-lg text-gray-600">We don't just clean vehicles — we diagnose, protect, and guide vehicle decisions. SafishaHub blends professional auto care, diagnostics, and long-term advisory so you can protect your investment and make smarter automotive decisions.</p>
     </div>
   </section>
@@ -37,13 +62,13 @@
   <!-- CORE SERVICES -->
   <section class="py-20 bg-gray-100">
     <div class="max-w-7xl mx-auto px-6">
-      <h3 class="text-3xl font-bold text-center mb-12">Core Diagnostic Entry Services</h3>
+      <h3 class="text-3xl font-bold text-center mb-12"><span class="gradient-text">Core Diagnostic Entry Services</span></h3>
 
       <div class="grid md:grid-cols-3 gap-8">
         <!-- PPF -->
-        <div class="bg-white p-6 rounded-2xl shadow">
-          <div class="h-40 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">PPF Image</div>
-          <h4 class="text-xl font-bold mb-2">Paint Protection Film (PPF)</h4>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-t-4 border-safisha-green">
+          <div class="h-40 bg-gradient-to-br from-safisha-green/20 to-safisha-blue/20 rounded-xl mb-4 flex items-center justify-center text-4xl">🛡️</div>
+          <h4 class="text-xl font-bold mb-2 text-safisha-dark">Paint Protection Film (PPF)</h4>
           <p class="text-gray-600 mb-3">A transparent protective film that shields your paint from scratches, stone chips, UV damage, and fading.</p>
           <ul class="text-sm text-gray-600 list-disc pl-4 space-y-1">
             <li>Preserves resale value</li>
@@ -53,9 +78,9 @@
         </div>
 
         <!-- TINT -->
-        <div class="bg-white p-6 rounded-2xl shadow">
-          <div class="h-40 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">Tint Image</div>
-          <h4 class="text-xl font-bold mb-2">Professional Window Tinting</h4>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-t-4 border-safisha-blue">
+          <div class="h-40 bg-gradient-to-br from-safisha-blue/20 to-safisha-green/20 rounded-xl mb-4 flex items-center justify-center text-4xl">🪟</div>
+          <h4 class="text-xl font-bold mb-2 text-safisha-dark">Professional Window Tinting</h4>
           <p class="text-gray-600 mb-3">High-performance tint films for heat reduction, UV protection, privacy, and compliance.</p>
           <ul class="text-sm text-gray-600 list-disc pl-4 space-y-1">
             <li>UV & heat control</li>
@@ -65,9 +90,9 @@
         </div>
 
         <!-- DETAILING -->
-        <div class="bg-white p-6 rounded-2xl shadow">
-          <div class="h-40 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">Detailing Image</div>
-          <h4 class="text-xl font-bold mb-2">Professional Car Detailing</h4>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-t-4 border-safisha-lime">
+          <div class="h-40 bg-gradient-to-br from-safisha-lime/20 to-safisha-blue/20 rounded-xl mb-4 flex items-center justify-center text-4xl">✨</div>
+          <h4 class="text-xl font-bold mb-2 text-safisha-dark">Professional Car Detailing</h4>
           <p class="text-gray-600 mb-3">Deep interior & exterior restoration that doubles as a full vehicle health check.</p>
           <ul class="text-sm text-gray-600 list-disc pl-4 space-y-1">
             <li>Exposes hidden faults</li>
@@ -82,14 +107,32 @@
   <!-- WHY US -->
   <section class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-6">Why SafishaHub?</h3>
-      <div class="grid md:grid-cols-3 gap-8 text-left">
-        <div>✅ Early vehicle problem detection</div>
-        <div>✅ Human inspection + AI intelligence</div>
-        <div>✅ Predictive maintenance guidance</div>
-        <div>✅ Insurance & compliance awareness</div>
-        <div>✅ Parts sourcing & disposal connections</div>
-        <div>✅ Vehicle value protection</div>
+      <h3 class="text-3xl font-bold mb-10"><span class="gradient-text">Why SafishaHub?</span></h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-50 p-5 rounded-xl flex items-center gap-3 hover:bg-safisha-green/10 transition-colors">
+          <span class="text-2xl">🔍</span>
+          <span class="font-medium">Early vehicle problem detection</span>
+        </div>
+        <div class="bg-gray-50 p-5 rounded-xl flex items-center gap-3 hover:bg-safisha-blue/10 transition-colors">
+          <span class="text-2xl">🤖</span>
+          <span class="font-medium">Human inspection + AI intelligence</span>
+        </div>
+        <div class="bg-gray-50 p-5 rounded-xl flex items-center gap-3 hover:bg-safisha-green/10 transition-colors">
+          <span class="text-2xl">📊</span>
+          <span class="font-medium">Predictive maintenance guidance</span>
+        </div>
+        <div class="bg-gray-50 p-5 rounded-xl flex items-center gap-3 hover:bg-safisha-blue/10 transition-colors">
+          <span class="text-2xl">📋</span>
+          <span class="font-medium">Insurance & compliance awareness</span>
+        </div>
+        <div class="bg-gray-50 p-5 rounded-xl flex items-center gap-3 hover:bg-safisha-green/10 transition-colors">
+          <span class="text-2xl">🔧</span>
+          <span class="font-medium">Parts sourcing & disposal connections</span>
+        </div>
+        <div class="bg-gray-50 p-5 rounded-xl flex items-center gap-3 hover:bg-safisha-blue/10 transition-colors">
+          <span class="text-2xl">💎</span>
+          <span class="font-medium">Vehicle value protection</span>
+        </div>
       </div>
     </div>
   </section>
@@ -97,30 +140,41 @@
   <!-- FUTURE SERVICES -->
   <section class="py-20 bg-gray-100">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-6">Future Connection Services</h3>
-      <p class="text-gray-600 mb-6">SafishaHub is building Kenya's most connected automotive solutions hub.</p>
-      <div class="grid md:grid-cols-3 gap-6 text-sm">
-        <div>Vinyl Wraps & Colored PPF</div>
-        <div>Parts Import & Sourcing</div>
-        <div>Dent & Body Repair</div>
-        <div>Fleet Branding</div>
-        <div>Insurance Advisory</div>
-        <div>Vehicle Disposal & Resale</div>
+      <h3 class="text-3xl font-bold mb-6"><span class="gradient-text">Future Connection Services</span></h3>
+      <p class="text-gray-600 mb-8">SafishaHub is building Kenya's most connected automotive solutions hub.</p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-safisha-green">Vinyl Wraps & Colored PPF</div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-safisha-blue">Parts Import & Sourcing</div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-safisha-lime">Dent & Body Repair</div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-safisha-blue">Fleet Branding</div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-safisha-green">Insurance Advisory</div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-safisha-lime">Vehicle Disposal & Resale</div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-20 bg-emerald-600 text-white text-center">
-    <h3 class="text-3xl font-bold mb-4">Start With a Smart Inspection</h3>
-    <p class="mb-6">Before you repaint, repair, sell, or upgrade — start at SafishaHub.</p>
-    <a href="https://wa.me/254111872279" class="bg-white text-emerald-600 px-6 py-3 rounded-xl font-semibold">Book on WhatsApp</a>
+  <section class="py-20 bg-gradient-to-r from-safisha-green to-safisha-blue text-white text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-4">Start With a Smart Inspection</h3>
+      <p class="mb-8 text-lg opacity-95">Before you repaint, repair, sell, or upgrade — start at SafishaHub.</p>
+      <a href="https://wa.me/254111872279" class="bg-white text-safisha-green px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all inline-block">📱 Book on WhatsApp</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-white py-6 text-center">
-    <p>© 2025 SafishaHub | Lena Moi Street, Nakuru</p>
-    <p>WhatsApp: +254 111 872 279</p>
+  <footer class="bg-safisha-dark text-white py-10">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-3">
+          <img src="logo.png" alt="SafishaHub" class="h-12 w-auto">
+        </div>
+        <div class="text-center md:text-right">
+          <p class="text-gray-400">© 2025 SafishaHub | Lena Moi Street, Nakuru</p>
+          <p class="text-safisha-green font-medium">WhatsApp: +254 111 872 279</p>
+        </div>
+      </div>
+    </div>
   </footer>
 
 </body>
