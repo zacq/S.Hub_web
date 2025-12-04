@@ -29,10 +29,5 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 
-# SPA fallback (redirect all routes to index.html, but not static assets)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
+
 
