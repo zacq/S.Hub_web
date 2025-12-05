@@ -95,8 +95,8 @@
 
     <!-- Hero Content -->
     <div class="relative z-10 max-w-5xl mx-auto px-6 text-center text-white py-16">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight drop-shadow-lg">Don't sell your car without autodetailing.</h1>
-      <p class="text-lg md:text-xl mb-6 opacity-95 max-w-3xl mx-auto drop-shadow-md">Increase your car's resale value by <span class="font-bold underline decoration-2">up to 30%</span> with SafishaHub's Vehicle Value Optimization — PPF, Tinting, and Premium Detailing.</p>
+      <h1 id="hero-headline" class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight drop-shadow-lg transition-opacity duration-500">Wrap It Up. Pump It Up.</h1>
+      <p id="hero-subtext" class="text-lg md:text-xl mb-6 opacity-95 max-w-3xl mx-auto drop-shadow-md transition-opacity duration-500">Protected paint attracts higher resale offers and faster buyers.</p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
         <a href="https://wa.me/254111872279" class="bg-white text-safisha-green px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition-all">Get a Free Value Audit (WhatsApp)</a>
         <a href="#services" class="px-6 py-3 rounded-xl border-2 border-white/50 hover:bg-white/10 transition-all">See Services</a>
@@ -124,10 +124,30 @@
     (function() {
       const slides = document.querySelectorAll('.carousel-slide');
       const dots = document.querySelectorAll('.carousel-dot');
+      const headline = document.getElementById('hero-headline');
+      const subtext = document.getElementById('hero-subtext');
       let current = 0;
       const interval = 4000; // 4 seconds per slide
 
+      const messages = [
+        { title: "Wrap It Up. Pump It Up.", text: "Protected paint attracts higher resale offers and faster buyers." },
+        { title: "Your Car Is Worth More Than You Think.", text: "Professional detailing increases buyer trust and perceived vehicle value." },
+        { title: "Before You List It… Boost It.", text: "Detailing + Tint + PPF can raise your selling price before you ever post the ad." },
+        { title: "Don't Sell a Tired-Looking Car.", text: "Fresh paint protection and detailing can shift your car into a higher price bracket." },
+        { title: "Buyers Pay More for Clean, Protected Cars.", text: "Protection reduces visible wear — and wear lowers your asking price." },
+        { title: "From Used to Premium-Looking.", text: "Detailing transforms appearance — upgraded look justifies higher pricing." },
+        { title: "Your First Impression Is Your Asking Price.", text: "A clean, glossy car triggers higher offers in the buyer's mind." },
+        { title: "Protect the Paint. Raise the Price.", text: "PPF prevents chips and fading that silently lower resale value." },
+        { title: "Sell Faster. Avoid Lowballers.", text: "Well-detailed cars attract serious buyers and reduce price negotiations." },
+        { title: "Don't Guess Your Car's Value — Upgrade It.", text: "Strategic detailing and protection directly influence resale performance." }
+      ];
+
       function showSlide(index) {
+        // Fade out text
+        headline.style.opacity = '0';
+        subtext.style.opacity = '0';
+
+        // Change slide
         slides.forEach((slide, i) => {
           slide.style.opacity = i === index ? '1' : '0';
         });
@@ -135,6 +155,15 @@
           dot.classList.toggle('bg-white/80', i === index);
           dot.classList.toggle('bg-white/40', i !== index);
         });
+
+        // Update and fade in text
+        setTimeout(() => {
+          headline.textContent = messages[index].title;
+          subtext.textContent = messages[index].text;
+          headline.style.opacity = '1';
+          subtext.style.opacity = '1';
+        }, 300);
+
         current = index;
       }
 
