@@ -27,23 +27,120 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
+    /* Hero Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(20px) rotate(-5deg); }
+    }
+    @keyframes pulse3d {
+      0%, 100% { transform: scale(1) rotateX(0deg); }
+      50% { transform: scale(1.05) rotateX(10deg); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes spin3d {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(74, 222, 128, 0.6); }
+    }
+
+    .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+    .animate-fade-in-down { animation: fadeInDown 0.8s ease-out forwards; }
+    .animate-fade-in-scale { animation: fadeInScale 0.8s ease-out forwards; }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-float-reverse { animation: floatReverse 7s ease-in-out infinite; }
+    .animate-float-slow { animation: float 8s ease-in-out infinite; }
+    .animate-pulse-3d { animation: pulse3d 4s ease-in-out infinite; }
+    .animate-glow { animation: glow 3s ease-in-out infinite; }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+
+    /* 3D Card Effect */
+    .card-3d {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    .card-3d-inner {
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+    }
+    .card-3d:hover .card-3d-inner {
+      transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
+    }
+
+    /* 3D Floating Shapes */
+    .shape-3d {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0.6;
+    }
+
+    /* Shimmer Button */
+    .btn-shimmer {
+      background: linear-gradient(90deg, #4ADE80 0%, #22C55E 25%, #0EA5E9 50%, #22C55E 75%, #4ADE80 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+    }
+
+    /* 3D Tilt on Scroll */
+    .tilt-card {
+      transition: transform 0.3s ease;
+    }
+    .tilt-card:hover {
+      transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+    }
+
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- NAVBAR -->
-  <nav class="bg-white/95 backdrop-blur-sm shadow-md fixed w-full z-50">
+  <nav class="bg-white/95 backdrop-blur-sm shadow-md fixed w-full z-50 opacity-0 animate-fade-in-down" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#" class="flex items-center gap-3">
+      <a href="#" class="flex items-center gap-3 hover:scale-105 transition-transform duration-300">
         <img src="assets/logo.png" alt="SafishaHub Logo" class="h-12 w-auto">
       </a>
       <div class="hidden md:flex items-center gap-6">
-        <a href="#why-preservation" class="text-sm font-medium text-gray-700 hover:text-safisha-green transition-colors">Why Preservation</a>
-        <a href="#pillars" class="text-sm font-medium text-gray-700 hover:text-safisha-green transition-colors">Value Services</a>
-        <a href="#maintenance" class="text-sm font-medium text-gray-700 hover:text-safisha-green transition-colors">Maintenance</a>
-        <a href="https://wa.me/254111872279?text=I%20want%20to%20protect%20my%20vehicle's%20value" class="bg-gradient-to-r from-safisha-green to-safisha-blue text-white px-5 py-2 rounded-xl font-semibold hover:shadow-lg transition-all">Protect My Vehicle</a>
+        <a href="#why-preservation" class="text-sm font-medium text-gray-700 hover:text-safisha-green hover:scale-110 transition-all duration-300">Why Preservation</a>
+        <a href="#pillars" class="text-sm font-medium text-gray-700 hover:text-safisha-green hover:scale-110 transition-all duration-300">Value Services</a>
+        <a href="#maintenance" class="text-sm font-medium text-gray-700 hover:text-safisha-green hover:scale-110 transition-all duration-300">Maintenance</a>
+        <a href="https://wa.me/254111872279?text=I%20want%20to%20protect%20my%20vehicle's%20value" class="btn-shimmer text-white px-5 py-2 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">Protect My Vehicle</a>
       </div>
-      <a href="https://wa.me/254111872279" class="md:hidden bg-gradient-to-r from-safisha-green to-safisha-blue text-white px-4 py-2 rounded-xl font-semibold text-sm">WhatsApp</a>
+      <a href="https://wa.me/254111872279" class="md:hidden btn-shimmer text-white px-4 py-2 rounded-xl font-semibold text-sm hover:scale-105 transition-all">WhatsApp</a>
     </div>
   </nav>
 
@@ -52,40 +149,59 @@
     <!-- Background Carousel -->
     <div id="hero-carousel" class="absolute inset-0 z-0">
       <div class="carousel-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
-        <img src="assets/hero-1.jpg" alt="Vehicle Value Preservation" class="w-full h-full object-cover">
+        <img src="assets/hero-1.jpg" alt="Vehicle Value Preservation" class="w-full h-full object-cover scale-105 animate-pulse-3d">
         <div class="absolute inset-0 bg-gradient-to-br from-safisha-dark/90 via-safisha-dark/80 to-safisha-blue/70"></div>
       </div>
       <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-        <img src="assets/hero-2.jpg" alt="Ceramic Window Tinting" class="w-full h-full object-cover">
+        <img src="assets/hero-2.jpg" alt="Ceramic Window Tinting" class="w-full h-full object-cover scale-105">
         <div class="absolute inset-0 bg-gradient-to-br from-safisha-dark/90 via-safisha-dark/80 to-safisha-blue/70"></div>
       </div>
       <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-        <img src="assets/hero-3.jpg" alt="Wheel Alignment" class="w-full h-full object-cover">
+        <img src="assets/hero-3.jpg" alt="Wheel Alignment" class="w-full h-full object-cover scale-105">
         <div class="absolute inset-0 bg-gradient-to-br from-safisha-dark/90 via-safisha-dark/80 to-safisha-blue/70"></div>
       </div>
       <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-        <img src="assets/hero-4.jpg" alt="Upholstery Protection" class="w-full h-full object-cover">
+        <img src="assets/hero-4.jpg" alt="Upholstery Protection" class="w-full h-full object-cover scale-105">
         <div class="absolute inset-0 bg-gradient-to-br from-safisha-dark/90 via-safisha-dark/80 to-safisha-blue/70"></div>
       </div>
     </div>
 
+    <!-- 3D Floating Elements -->
+    <div class="absolute inset-0 z-5 pointer-events-none overflow-hidden">
+      <!-- Floating Circles -->
+      <div class="shape-3d w-32 h-32 bg-gradient-to-br from-safisha-green/30 to-safisha-blue/20 top-20 left-10 animate-float hidden md:block"></div>
+      <div class="shape-3d w-24 h-24 bg-gradient-to-br from-safisha-blue/30 to-safisha-lime/20 top-40 right-20 animate-float-reverse hidden md:block"></div>
+      <div class="shape-3d w-16 h-16 bg-gradient-to-br from-safisha-lime/40 to-safisha-green/20 bottom-32 left-1/4 animate-float-slow hidden md:block"></div>
+      <div class="shape-3d w-20 h-20 bg-gradient-to-br from-safisha-green/25 to-transparent bottom-20 right-1/3 animate-float hidden md:block"></div>
+      <!-- 3D Hexagons -->
+      <div class="absolute top-1/4 right-10 w-12 h-12 border-2 border-safisha-green/30 rotate-45 animate-float-slow hidden lg:block" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></div>
+      <div class="absolute bottom-1/3 left-16 w-8 h-8 border-2 border-safisha-blue/30 rotate-12 animate-float-reverse hidden lg:block" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></div>
+    </div>
+
     <!-- Hero Content -->
     <div class="relative z-10 max-w-5xl mx-auto px-6 text-center text-white py-16">
-      <p class="text-safisha-lime font-semibold text-lg mb-4 tracking-wide">VEHICLE VALUE PRESERVATION</p>
-      <h1 id="hero-headline" class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg transition-opacity duration-500">Washing Cleans Your Car.<br><span class="gradient-text">Preservation Protects Its Value.</span></h1>
-      <p id="hero-subtext" class="text-lg md:text-xl mb-8 opacity-95 max-w-3xl mx-auto drop-shadow-md transition-opacity duration-500">We provide specialized automotive services that prevent depreciation, reduce long-term costs, and maintain near-original vehicle condition.</p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-        <a href="https://wa.me/254111872279?text=I%20want%20to%20protect%20my%20vehicle's%20value" class="bg-gradient-to-r from-safisha-green to-safisha-lime text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-105 transition-all">Protect Your Vehicle's Value</a>
-        <a href="#pillars" class="px-8 py-4 rounded-xl border-2 border-white/50 hover:bg-white/10 transition-all font-semibold">See Value Services</a>
+      <p class="text-safisha-lime font-semibold text-lg mb-4 tracking-wide opacity-0 animate-fade-in-down" style="animation-delay: 0.1s; animation-fill-mode: forwards;">VEHICLE VALUE PRESERVATION</p>
+      <h1 id="hero-headline" class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">Washing Cleans Your Car.<br><span class="gradient-text">Preservation Protects Its Value.</span></h1>
+      <p id="hero-subtext" class="text-lg md:text-xl mb-8 opacity-0 max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style="animation-delay: 0.5s; animation-fill-mode: forwards;">We provide specialized automotive services that prevent depreciation, reduce long-term costs, and maintain near-original vehicle condition.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 opacity-0 animate-fade-in-scale" style="animation-delay: 0.7s; animation-fill-mode: forwards;">
+        <a href="https://wa.me/254111872279?text=I%20want%20to%20protect%20my%20vehicle's%20value" class="btn-shimmer text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 animate-glow">Protect Your Vehicle's Value</a>
+        <a href="#pillars" class="px-8 py-4 rounded-xl border-2 border-white/50 hover:bg-white/10 hover:scale-105 transition-all duration-300 font-semibold glass">See Value Services</a>
       </div>
-      <p class="text-sm opacity-80 drop-shadow">📍 Lena Moi Street, Nakuru • Premium Vehicle Care • Value-First Approach</p>
+      <p class="text-sm opacity-0 drop-shadow animate-fade-in-up" style="animation-delay: 0.9s; animation-fill-mode: forwards;">📍 Lena Moi Street, Nakuru • Premium Vehicle Care • Value-First Approach</p>
 
       <!-- Carousel Indicators -->
-      <div class="flex justify-center gap-2 mt-8">
-        <button class="carousel-dot w-2 h-2 rounded-full bg-white/80 transition-all" data-slide="0"></button>
-        <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 transition-all" data-slide="1"></button>
-        <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 transition-all" data-slide="2"></button>
-        <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 transition-all" data-slide="3"></button>
+      <div class="flex justify-center gap-2 mt-8 opacity-0 animate-fade-in-up" style="animation-delay: 1s; animation-fill-mode: forwards;">
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/80 transition-all hover:scale-125" data-slide="0"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 transition-all hover:scale-125" data-slide="1"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 transition-all hover:scale-125" data-slide="2"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 transition-all hover:scale-125" data-slide="3"></button>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 opacity-0 animate-fade-in-up" style="animation-delay: 1.2s; animation-fill-mode: forwards;">
+      <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
+        <div class="w-1.5 h-3 bg-white/80 rounded-full animate-bounce"></div>
       </div>
     </div>
   </section>
@@ -126,8 +242,14 @@
   </script>
 
   <!-- WHY WASHING ALONE IS NOT ENOUGH -->
-  <section id="why-preservation" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
+  <section id="why-preservation" class="py-20 bg-white relative overflow-hidden">
+    <!-- 3D Background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="shape-3d w-36 h-36 bg-gradient-to-br from-red-100 to-transparent top-20 left-5 animate-float-slow hidden lg:block"></div>
+      <div class="shape-3d w-28 h-28 bg-gradient-to-br from-safisha-green/10 to-transparent bottom-20 right-5 animate-float-reverse hidden lg:block"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Why Washing Alone Is Not Enough</span></h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">A clean car looks good today. A preserved car holds its value for years. Understanding the difference is the first step to protecting your investment.</p>
@@ -135,54 +257,58 @@
 
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <!-- Problem Side -->
-        <div class="bg-red-50 p-8 rounded-2xl border-l-4 border-red-400">
-          <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center gap-2">⚠️ What Washing Misses</h3>
-          <ul class="space-y-4 text-gray-700">
-            <li class="flex gap-3 items-start">
-              <span class="text-red-500 font-bold">✕</span>
-              <div><strong>UV & Heat Damage:</strong> Sun exposure degrades dashboards, fades seats, and cracks leather — invisible until it's too late.</div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <span class="text-red-500 font-bold">✕</span>
-              <div><strong>Interior Wear:</strong> Daily use wears upholstery, carpets, and trims. Buyers notice this immediately.</div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <span class="text-red-500 font-bold">✕</span>
-              <div><strong>Suspension Strain:</strong> Misaligned wheels cause uneven tire wear and handling issues that lower resale value.</div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <span class="text-red-500 font-bold">✕</span>
-              <div><strong>Hidden Depreciation:</strong> Moisture, mold, and permanent stains accumulate under surface cleanliness.</div>
-            </li>
-          </ul>
+        <div class="card-3d">
+          <div class="card-3d-inner bg-red-50 p-8 rounded-2xl border-l-4 border-red-400 hover:shadow-xl transition-all">
+            <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center gap-2">⚠️ What Washing Misses</h3>
+            <ul class="space-y-4 text-gray-700">
+              <li class="flex gap-3 items-start group">
+                <span class="text-red-500 font-bold group-hover:scale-125 transition-transform">✕</span>
+                <div><strong>UV & Heat Damage:</strong> Sun exposure degrades dashboards, fades seats, and cracks leather — invisible until it's too late.</div>
+              </li>
+              <li class="flex gap-3 items-start group">
+                <span class="text-red-500 font-bold group-hover:scale-125 transition-transform">✕</span>
+                <div><strong>Interior Wear:</strong> Daily use wears upholstery, carpets, and trims. Buyers notice this immediately.</div>
+              </li>
+              <li class="flex gap-3 items-start group">
+                <span class="text-red-500 font-bold group-hover:scale-125 transition-transform">✕</span>
+                <div><strong>Suspension Strain:</strong> Misaligned wheels cause uneven tire wear and handling issues that lower resale value.</div>
+              </li>
+              <li class="flex gap-3 items-start group">
+                <span class="text-red-500 font-bold group-hover:scale-125 transition-transform">✕</span>
+                <div><strong>Hidden Depreciation:</strong> Moisture, mold, and permanent stains accumulate under surface cleanliness.</div>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <!-- Solution Side -->
-        <div class="bg-green-50 p-8 rounded-2xl border-l-4 border-safisha-green">
-          <h3 class="text-xl font-bold text-safisha-green mb-4 flex items-center gap-2">✓ What Preservation Protects</h3>
-          <ul class="space-y-4 text-gray-700">
-            <li class="flex gap-3 items-start">
-              <span class="text-safisha-green font-bold">✓</span>
-              <div><strong>Interior Condition:</strong> Buyers evaluate seat quality, dashboard condition, and smell before anything else.</div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <span class="text-safisha-green font-bold">✓</span>
-              <div><strong>Ride Quality:</strong> Proper wheel alignment signals disciplined maintenance and mechanical integrity.</div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <span class="text-safisha-green font-bold">✓</span>
-              <div><strong>Climate Protection:</strong> Ceramic tinting blocks UV and heat, preserving interior for years.</div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <span class="text-safisha-green font-bold">✓</span>
-              <div><strong>Long-Term Savings:</strong> Preventive care costs less than damage repair or price reduction at sale.</div>
-            </li>
-          </ul>
+        <div class="card-3d">
+          <div class="card-3d-inner bg-green-50 p-8 rounded-2xl border-l-4 border-safisha-green hover:shadow-xl transition-all">
+            <h3 class="text-xl font-bold text-safisha-green mb-4 flex items-center gap-2">✓ What Preservation Protects</h3>
+            <ul class="space-y-4 text-gray-700">
+              <li class="flex gap-3 items-start group">
+                <span class="text-safisha-green font-bold group-hover:scale-125 transition-transform">✓</span>
+                <div><strong>Interior Condition:</strong> Buyers evaluate seat quality, dashboard condition, and smell before anything else.</div>
+              </li>
+              <li class="flex gap-3 items-start group">
+                <span class="text-safisha-green font-bold group-hover:scale-125 transition-transform">✓</span>
+                <div><strong>Ride Quality:</strong> Proper wheel alignment signals disciplined maintenance and mechanical integrity.</div>
+              </li>
+              <li class="flex gap-3 items-start group">
+                <span class="text-safisha-green font-bold group-hover:scale-125 transition-transform">✓</span>
+                <div><strong>Climate Protection:</strong> Ceramic tinting blocks UV and heat, preserving interior for years.</div>
+              </li>
+              <li class="flex gap-3 items-start group">
+                <span class="text-safisha-green font-bold group-hover:scale-125 transition-transform">✓</span>
+                <div><strong>Long-Term Savings:</strong> Preventive care costs less than damage repair or price reduction at sale.</div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <div class="mt-12 text-center">
-        <div class="inline-block bg-safisha-dark text-white px-8 py-4 rounded-2xl">
+        <div class="inline-block bg-safisha-dark text-white px-8 py-4 rounded-2xl glass hover:scale-105 transition-transform duration-300">
           <p class="text-lg font-medium">"Buyers evaluate interior condition, ride quality, and maintenance discipline <span class="text-safisha-lime font-bold">more than surface cleanliness.</span>"</p>
         </div>
       </div>
@@ -190,8 +316,14 @@
   </section>
 
   <!-- THE FOUR VALUE PRESERVATION PILLARS -->
-  <section id="pillars" class="py-20 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-6">
+  <section id="pillars" class="py-20 bg-gray-100 relative overflow-hidden">
+    <!-- 3D Background Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="shape-3d w-40 h-40 bg-gradient-to-br from-safisha-green/10 to-transparent top-10 right-10 animate-float-slow hidden lg:block"></div>
+      <div class="shape-3d w-28 h-28 bg-gradient-to-br from-safisha-blue/10 to-transparent bottom-20 left-10 animate-float-reverse hidden lg:block"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
       <div class="text-center mb-12">
         <p class="text-safisha-green font-semibold text-sm tracking-widest mb-2">OUR CORE SERVICES</p>
         <h3 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">The Four Value Preservation Pillars</span></h3>
@@ -200,91 +332,105 @@
 
       <div class="grid md:grid-cols-2 gap-8">
         <!-- PILLAR 1: CERAMIC WINDOW TINTING -->
-        <article class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border-l-4 border-safisha-green group">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="bg-safisha-green/10 p-4 rounded-xl group-hover:bg-safisha-green group-hover:text-white transition-all">
-              <span class="text-3xl">🪟</span>
+        <article class="card-3d">
+          <div class="card-3d-inner bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all border-l-4 border-safisha-green group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="bg-safisha-green/10 p-4 rounded-xl group-hover:bg-safisha-green group-hover:text-white transition-all transform group-hover:scale-110 group-hover:rotate-3">
+                <span class="text-3xl">🪟</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-safisha-green tracking-widest">PILLAR 1</span>
+                <h4 class="text-2xl font-bold text-safisha-dark">Ceramic Window Tinting</h4>
+              </div>
             </div>
-            <div>
-              <span class="text-xs font-bold text-safisha-green tracking-widest">PILLAR 1</span>
-              <h4 class="text-2xl font-bold text-safisha-dark">Ceramic Window Tinting</h4>
+            <div class="space-y-3 text-gray-600 mb-6">
+              <p><strong class="text-safisha-dark">The Problem:</strong> UV and infrared heat penetrate untreated glass, degrading dashboards, fading upholstery, and cracking leather over time.</p>
+              <p><strong class="text-safisha-dark">Our Solution:</strong> Advanced ceramic films block up to 99% of UV rays and significantly reduce interior heat without affecting visibility.</p>
+              <p><strong class="text-safisha-dark">Value Impact:</strong> Preserves interior condition — the #1 factor buyers evaluate. Superior longevity vs cheap dyed films.</p>
             </div>
+            <a href="ceramic-tinting.html" class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-safisha-green to-safisha-lime text-white font-semibold hover:shadow-lg hover:scale-105 transition-all">Learn More →</a>
           </div>
-          <div class="space-y-3 text-gray-600 mb-6">
-            <p><strong class="text-safisha-dark">The Problem:</strong> UV and infrared heat penetrate untreated glass, degrading dashboards, fading upholstery, and cracking leather over time.</p>
-            <p><strong class="text-safisha-dark">Our Solution:</strong> Advanced ceramic films block up to 99% of UV rays and significantly reduce interior heat without affecting visibility.</p>
-            <p><strong class="text-safisha-dark">Value Impact:</strong> Preserves interior condition — the #1 factor buyers evaluate. Superior longevity vs cheap dyed films.</p>
-          </div>
-          <a href="ceramic-tinting.html" class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-safisha-green to-safisha-lime text-white font-semibold hover:shadow-lg transition-all">Learn More →</a>
         </article>
 
         <!-- PILLAR 2: WHEEL BALANCING & ALIGNMENT -->
-        <article class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border-l-4 border-safisha-blue group">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="bg-safisha-blue/10 p-4 rounded-xl group-hover:bg-safisha-blue group-hover:text-white transition-all">
-              <span class="text-3xl">⚙️</span>
+        <article class="card-3d">
+          <div class="card-3d-inner bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all border-l-4 border-safisha-blue group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="bg-safisha-blue/10 p-4 rounded-xl group-hover:bg-safisha-blue group-hover:text-white transition-all transform group-hover:scale-110 group-hover:-rotate-3">
+                <span class="text-3xl">⚙️</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-safisha-blue tracking-widest">PILLAR 2</span>
+                <h4 class="text-2xl font-bold text-safisha-dark">Wheel Balancing & Alignment</h4>
+              </div>
             </div>
-            <div>
-              <span class="text-xs font-bold text-safisha-blue tracking-widest">PILLAR 2</span>
-              <h4 class="text-2xl font-bold text-safisha-dark">Wheel Balancing & Alignment</h4>
-            </div>
-          </div>
-          <div class="space-y-3 text-gray-600 mb-6">
-            <p><strong class="text-safisha-dark">The Problem:</strong> Misaligned wheels cause uneven tire wear, suspension damage, and handling issues that lower resale value.</p>
-            <p><strong class="text-safisha-dark">Our Solution:</strong> Precision alignment and balancing that extends tire life and protects suspension components.</p>
+            <div class="space-y-3 text-gray-600 mb-6">
+              <p><strong class="text-safisha-dark">The Problem:</strong> Misaligned wheels cause uneven tire wear, suspension damage, and handling issues that lower resale value.</p>
+              <p><strong class="text-safisha-dark">Our Solution:</strong> Precision alignment and balancing that extends tire life and protects suspension components.</p>
             <p><strong class="text-safisha-dark">Value Impact:</strong> Signals disciplined maintenance to buyers. Improves fuel efficiency and ride quality.</p>
+            </div>
+            <a href="wheel-alignment.html" class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-safisha-blue to-safisha-green text-white font-semibold hover:shadow-lg hover:scale-105 transition-all">Learn More →</a>
           </div>
-          <a href="wheel-alignment.html" class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-safisha-blue to-safisha-green text-white font-semibold hover:shadow-lg transition-all">Learn More →</a>
         </article>
 
         <!-- PILLAR 3: UPHOLSTERY PROTECTION -->
-        <article class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border-l-4 border-safisha-lime group">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="bg-safisha-lime/10 p-4 rounded-xl group-hover:bg-safisha-lime group-hover:text-white transition-all">
-              <span class="text-3xl">🪑</span>
+        <article class="card-3d">
+          <div class="card-3d-inner bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all border-l-4 border-safisha-lime group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="bg-safisha-lime/10 p-4 rounded-xl group-hover:bg-safisha-lime group-hover:text-white transition-all transform group-hover:scale-110 group-hover:rotate-3">
+                <span class="text-3xl">🪑</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-safisha-lime tracking-widest">PILLAR 3</span>
+                <h4 class="text-2xl font-bold text-safisha-dark">Upholstery Protection & Restoration</h4>
+              </div>
             </div>
-            <div>
-              <span class="text-xs font-bold text-safisha-lime tracking-widest">PILLAR 3</span>
-              <h4 class="text-2xl font-bold text-safisha-dark">Upholstery Protection & Restoration</h4>
+            <div class="space-y-3 text-gray-600 mb-6">
+              <p><strong class="text-safisha-dark">The Problem:</strong> Seat wear, stains, and interior damage are primary depreciation factors buyers notice immediately.</p>
+              <p><strong class="text-safisha-dark">Our Solution:</strong> Protective seat covers, leather conditioning, fabric treatments, and synthetic leather upgrades.</p>
+              <p><strong class="text-safisha-dark">Value Impact:</strong> Preserves OEM interior condition. Upgrades increase buyer appeal and perceived value.</p>
             </div>
+            <a href="upholstery-protection.html" class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-safisha-lime to-safisha-blue text-white font-semibold hover:shadow-lg hover:scale-105 transition-all">Learn More →</a>
           </div>
-          <div class="space-y-3 text-gray-600 mb-6">
-            <p><strong class="text-safisha-dark">The Problem:</strong> Seat wear, stains, and interior damage are primary depreciation factors buyers notice immediately.</p>
-            <p><strong class="text-safisha-dark">Our Solution:</strong> Protective seat covers, leather conditioning, fabric treatments, and synthetic leather upgrades.</p>
-            <p><strong class="text-safisha-dark">Value Impact:</strong> Preserves OEM interior condition. Upgrades increase buyer appeal and perceived value.</p>
-          </div>
-          <a href="upholstery-protection.html" class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-safisha-lime to-safisha-blue text-white font-semibold hover:shadow-lg transition-all">Learn More →</a>
         </article>
 
         <!-- PILLAR 4: TPE FLOOR MATS -->
-        <article class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border-l-4 border-safisha-green group">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="bg-safisha-green/10 p-4 rounded-xl group-hover:bg-safisha-green group-hover:text-white transition-all">
-              <span class="text-3xl">🛡️</span>
+        <article class="card-3d">
+          <div class="card-3d-inner bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all border-l-4 border-safisha-green group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="bg-safisha-green/10 p-4 rounded-xl group-hover:bg-safisha-green group-hover:text-white transition-all transform group-hover:scale-110 group-hover:-rotate-3">
+                <span class="text-3xl">🛡️</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-safisha-green tracking-widest">PILLAR 4</span>
+                <h4 class="text-2xl font-bold text-safisha-dark">TPE Floor Mats</h4>
+              </div>
             </div>
-            <div>
-              <span class="text-xs font-bold text-safisha-green tracking-widest">PILLAR 4</span>
-              <h4 class="text-2xl font-bold text-safisha-dark">TPE Floor Mats</h4>
+            <div class="space-y-3 text-gray-600 mb-6">
+              <p><strong class="text-safisha-dark">The Problem:</strong> Factory carpets absorb moisture, develop odors, and suffer permanent staining from daily use.</p>
+              <p><strong class="text-safisha-dark">Our Solution:</strong> Custom-fit TPE (Thermoplastic Elastomer) mats that protect factory carpets completely.</p>
+              <p><strong class="text-safisha-dark">Value Impact:</strong> Prevents odor and mold. Easy cleaning. Anti-slip safety with secure fit.</p>
             </div>
+            <a href="tpe-floor-mats.html" class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-safisha-green to-safisha-lime text-white font-semibold hover:shadow-lg hover:scale-105 transition-all">Learn More →</a>
           </div>
-          <div class="space-y-3 text-gray-600 mb-6">
-            <p><strong class="text-safisha-dark">The Problem:</strong> Factory carpets absorb moisture, develop odors, and suffer permanent staining from daily use.</p>
-            <p><strong class="text-safisha-dark">Our Solution:</strong> Custom-fit TPE (Thermoplastic Elastomer) mats that protect factory carpets completely.</p>
-            <p><strong class="text-safisha-dark">Value Impact:</strong> Prevents odor and mold. Easy cleaning. Anti-slip safety with secure fit.</p>
-          </div>
-          <a href="tpe-floor-mats.html" class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-safisha-green to-safisha-lime text-white font-semibold hover:shadow-lg transition-all">Learn More →</a>
         </article>
       </div>
 
       <div class="mt-12 text-center">
-        <a href="https://wa.me/254111872279?text=I%20want%20a%20vehicle%20value%20assessment" class="inline-block px-8 py-4 rounded-xl bg-safisha-dark text-white font-bold text-lg hover:shadow-xl hover:scale-105 transition-all">🚗 Request a Vehicle Value Assessment</a>
+        <a href="https://wa.me/254111872279?text=I%20want%20a%20vehicle%20value%20assessment" class="btn-shimmer inline-block px-8 py-4 rounded-xl text-white font-bold text-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 animate-glow">🚗 Request a Vehicle Value Assessment</a>
       </div>
     </div>
   </section>
 
   <!-- SECONDARY MAINTENANCE SERVICES -->
-  <section id="maintenance" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
+  <section id="maintenance" class="py-20 bg-white relative overflow-hidden">
+    <!-- 3D Background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="shape-3d w-32 h-32 bg-gradient-to-br from-gray-200 to-transparent top-10 right-20 animate-float hidden lg:block"></div>
+      <div class="shape-3d w-24 h-24 bg-gradient-to-br from-safisha-green/10 to-transparent bottom-20 left-10 animate-float-reverse hidden lg:block"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
       <div class="text-center mb-12">
         <p class="text-gray-500 font-semibold text-sm tracking-widest mb-2">SUPPORTING SERVICES</p>
         <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Maintenance & Appearance Services</span></h2>
@@ -293,9 +439,9 @@
 
       <div class="grid md:grid-cols-3 gap-6">
         <!-- Maintenance Washes -->
-        <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-t-4 border-gray-400 group">
+        <div class="tilt-card bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-gray-400 group">
           <div class="flex items-center gap-3 mb-4">
-            <span class="text-3xl group-hover:scale-110 transition-transform">🚿</span>
+            <span class="text-3xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">🚿</span>
             <h4 class="font-bold text-lg text-safisha-dark">Maintenance Washes</h4>
           </div>
           <p class="text-gray-600 text-sm mb-4">Regular cleaning to maintain appearance between protection treatments. Not a substitute for preservation services.</p>
@@ -307,9 +453,9 @@
         </div>
 
         <!-- Paint Protection Film -->
-        <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-t-4 border-safisha-green group">
+        <div class="tilt-card bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-safisha-green group">
           <div class="flex items-center gap-3 mb-4">
-            <span class="text-3xl group-hover:scale-110 transition-transform">🛡️</span>
+            <span class="text-3xl group-hover:scale-125 group-hover:-rotate-12 transition-all duration-300">🛡️</span>
             <h4 class="font-bold text-lg text-safisha-dark">Paint Protection Film (PPF)</h4>
           </div>
           <p class="text-gray-600 text-sm mb-4">Transparent protective film that shields paint from chips, scratches, and UV damage.</p>
@@ -321,9 +467,9 @@
         </div>
 
         <!-- Vinyl Wraps -->
-        <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-t-4 border-safisha-blue group">
+        <div class="tilt-card bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-safisha-blue group">
           <div class="flex items-center gap-3 mb-4">
-            <span class="text-3xl group-hover:scale-110 transition-transform">🎨</span>
+            <span class="text-3xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">🎨</span>
             <h4 class="font-bold text-lg text-safisha-dark">Vinyl Wraps & Branding</h4>
           </div>
           <p class="text-gray-600 text-sm mb-4">Custom wraps for aesthetic changes or business branding while protecting original paint.</p>
@@ -335,9 +481,9 @@
         </div>
 
         <!-- Detailing -->
-        <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-t-4 border-safisha-lime group">
+        <div class="tilt-card bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-safisha-lime group">
           <div class="flex items-center gap-3 mb-4">
-            <span class="text-3xl group-hover:scale-110 transition-transform">✨</span>
+            <span class="text-3xl group-hover:scale-125 group-hover:-rotate-12 transition-all duration-300">✨</span>
             <h4 class="font-bold text-lg text-safisha-dark">Value-First Detailing</h4>
           </div>
           <p class="text-gray-600 text-sm mb-4">Deep cleaning and restoration that uncovers issues affecting value.</p>
@@ -349,9 +495,9 @@
         </div>
 
         <!-- Pre-Sale Preparation -->
-        <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-t-4 border-safisha-green group">
+        <div class="tilt-card bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-safisha-green group">
           <div class="flex items-center gap-3 mb-4">
-            <span class="text-3xl group-hover:scale-110 transition-transform">💰</span>
+            <span class="text-3xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">💰</span>
             <h4 class="font-bold text-lg text-safisha-dark">Pre-Sale Preparation</h4>
           </div>
           <p class="text-gray-600 text-sm mb-4">Comprehensive preparation package to maximize your vehicle's selling price.</p>
@@ -363,9 +509,9 @@
         </div>
 
         <!-- Headlight Restoration -->
-        <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-t-4 border-safisha-blue group">
+        <div class="tilt-card bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-safisha-blue group">
           <div class="flex items-center gap-3 mb-4">
-            <span class="text-3xl group-hover:scale-110 transition-transform">💡</span>
+            <span class="text-3xl group-hover:scale-125 group-hover:-rotate-12 transition-all duration-300">💡</span>
             <h4 class="font-bold text-lg text-safisha-dark">Headlight Restoration</h4>
           </div>
           <p class="text-gray-600 text-sm mb-4">Restore cloudy, yellowed headlights to improve visibility and appearance.</p>
@@ -379,46 +525,52 @@
 
       <div class="mt-10 text-center">
         <p class="text-gray-500 text-sm mb-4">💡 <em>These services support — but don't replace — our core value preservation pillars.</em></p>
-        <a href="https://wa.me/254111872279?text=I'm%20interested%20in%20maintenance%20services" class="px-6 py-3 rounded-xl bg-gray-700 text-white font-semibold hover:bg-gray-800 hover:shadow-lg transition-all inline-block">Inquire About Maintenance Services</a>
+        <a href="https://wa.me/254111872279?text=I'm%20interested%20in%20maintenance%20services" class="px-6 py-3 rounded-xl bg-gray-700 text-white font-semibold hover:bg-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block">Inquire About Maintenance Services</a>
       </div>
     </div>
   </section>
 
   <!-- TRUST INDICATORS -->
-  <section class="py-20 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-6">
+  <section class="py-20 bg-gray-100 relative overflow-hidden">
+    <!-- 3D Background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="shape-3d w-48 h-48 bg-gradient-to-br from-safisha-green/5 to-transparent -top-10 -left-10 animate-float hidden lg:block"></div>
+      <div class="shape-3d w-36 h-36 bg-gradient-to-br from-safisha-blue/5 to-transparent -bottom-10 -right-10 animate-float-reverse hidden lg:block"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
       <div class="text-center mb-12">
         <h3 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Why Vehicle Owners Trust SafishaHub</span></h3>
         <p class="text-gray-600 text-lg max-w-2xl mx-auto">We're not a car wash. We're a vehicle value preservation partner.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-l-4 border-safisha-green">
-          <span class="text-4xl mb-4 block group-hover:scale-110 transition-transform">🎯</span>
+        <div class="tilt-card group bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 border-l-4 border-safisha-green">
+          <span class="text-4xl mb-4 block group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">🎯</span>
           <h4 class="font-bold text-lg text-safisha-dark mb-2">Value-First Approach</h4>
           <p class="text-gray-600 text-sm">Every recommendation is based on protecting and enhancing your vehicle's resale value.</p>
         </div>
-        <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-l-4 border-safisha-blue">
-          <span class="text-4xl mb-4 block group-hover:scale-110 transition-transform">🔬</span>
+        <div class="tilt-card group bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 border-l-4 border-safisha-blue">
+          <span class="text-4xl mb-4 block group-hover:scale-125 group-hover:-rotate-12 transition-all duration-300">🔬</span>
           <h4 class="font-bold text-lg text-safisha-dark mb-2">Premium Materials</h4>
           <p class="text-gray-600 text-sm">We use only high-quality ceramic films, TPE materials, and professional-grade products.</p>
         </div>
-        <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-l-4 border-safisha-lime">
-          <span class="text-4xl mb-4 block group-hover:scale-110 transition-transform">📊</span>
+        <div class="tilt-card group bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 border-l-4 border-safisha-lime">
+          <span class="text-4xl mb-4 block group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">📊</span>
           <h4 class="font-bold text-lg text-safisha-dark mb-2">Educated Decisions</h4>
           <p class="text-gray-600 text-sm">We explain the "why" behind every service so you understand the value impact.</p>
         </div>
-        <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-l-4 border-safisha-blue">
-          <span class="text-4xl mb-4 block group-hover:scale-110 transition-transform">⏱️</span>
+        <div class="tilt-card group bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 border-l-4 border-safisha-blue">
+          <span class="text-4xl mb-4 block group-hover:scale-125 group-hover:-rotate-12 transition-all duration-300">⏱️</span>
           <h4 class="font-bold text-lg text-safisha-dark mb-2">Long-Term Thinking</h4>
           <p class="text-gray-600 text-sm">Our services are investments that pay off over years, not quick fixes.</p>
         </div>
-        <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-l-4 border-safisha-green">
-          <span class="text-4xl mb-4 block group-hover:scale-110 transition-transform">🤝</span>
+        <div class="tilt-card group bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 border-l-4 border-safisha-green">
+          <span class="text-4xl mb-4 block group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">🤝</span>
           <h4 class="font-bold text-lg text-safisha-dark mb-2">Honest Guidance</h4>
           <p class="text-gray-600 text-sm">We'll tell you what you need — and what you don't. No upselling.</p>
         </div>
-        <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-l-4 border-safisha-lime">
-          <span class="text-4xl mb-4 block group-hover:scale-110 transition-transform">📍</span>
+        <div class="tilt-card group bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 border-l-4 border-safisha-lime">
+          <span class="text-4xl mb-4 block group-hover:scale-125 group-hover:-rotate-12 transition-all duration-300">📍</span>
           <h4 class="font-bold text-lg text-safisha-dark mb-2">Local Expertise</h4>
           <p class="text-gray-600 text-sm">Based in Nakuru, we understand local climate, roads, and market conditions.</p>
         </div>
@@ -427,13 +579,19 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="py-16 bg-white">
-    <div class="max-w-5xl mx-auto px-6 text-center">
+  <section class="py-16 bg-white relative overflow-hidden">
+    <!-- 3D Background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="shape-3d w-32 h-32 bg-gradient-to-br from-safisha-lime/10 to-transparent top-10 left-10 animate-float-slow hidden lg:block"></div>
+      <div class="shape-3d w-24 h-24 bg-gradient-to-br from-safisha-blue/10 to-transparent bottom-10 right-10 animate-float hidden lg:block"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
       <h3 class="text-3xl font-bold mb-4"><span class="gradient-text">Customer Success Stories</span></h3>
       <p class="text-gray-700 mb-8">Real vehicle owners sharing their preservation journey with SafishaHub.</p>
       <div class="grid md:grid-cols-3 gap-4">
         <!-- Video 1 -->
-        <div class="bg-gray-50 p-3 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+        <div class="tilt-card bg-gray-50 p-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
           <div class="relative w-full rounded-lg overflow-hidden" style="height: 320px;">
             <iframe
               class="absolute top-0 left-0 w-full h-full rounded-lg"
@@ -446,7 +604,7 @@
           </div>
         </div>
         <!-- Video 2 -->
-        <div class="bg-gray-50 p-3 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+        <div class="tilt-card bg-gray-50 p-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
           <div class="relative w-full rounded-lg overflow-hidden" style="height: 320px;">
             <iframe
               class="absolute top-0 left-0 w-full h-full rounded-lg"
@@ -459,7 +617,7 @@
           </div>
         </div>
         <!-- Video 3 -->
-        <div class="bg-gray-50 p-3 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+        <div class="tilt-card bg-gray-50 p-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
           <div class="relative w-full rounded-lg overflow-hidden" style="height: 320px;">
             <iframe
               class="absolute top-0 left-0 w-full h-full rounded-lg"
@@ -476,12 +634,19 @@
   </section>
 
   <!-- CTA -->
-  <section class="py-20 bg-gradient-to-r from-safisha-dark to-safisha-blue text-white text-center">
-    <div class="max-w-4xl mx-auto px-6">
+  <section class="py-20 bg-gradient-to-r from-safisha-dark to-safisha-blue text-white text-center relative overflow-hidden">
+    <!-- 3D Floating Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="shape-3d w-40 h-40 bg-gradient-to-br from-safisha-green/20 to-transparent top-0 left-1/4 animate-float hidden md:block"></div>
+      <div class="shape-3d w-32 h-32 bg-gradient-to-br from-safisha-lime/20 to-transparent bottom-0 right-1/4 animate-float-reverse hidden md:block"></div>
+      <div class="absolute top-10 right-10 w-16 h-16 border-2 border-white/10 rotate-45 animate-float-slow hidden lg:block" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
       <h3 class="text-3xl md:text-4xl font-bold mb-4">Ready to Protect Your Vehicle's Value?</h3>
       <p class="mb-8 text-lg opacity-95 max-w-2xl mx-auto">Start with a free consultation. We'll assess your vehicle and recommend the preservation services that make the most sense for your situation.</p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://wa.me/254111872279?text=I%20want%20to%20protect%20my%20vehicle's%20value" class="bg-gradient-to-r from-safisha-green to-safisha-lime text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-105 transition-all inline-block">🚗 Protect Your Vehicle's Value</a>
+        <a href="https://wa.me/254111872279?text=I%20want%20to%20protect%20my%20vehicle's%20value" class="btn-shimmer text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 inline-block animate-glow">🚗 Protect Your Vehicle's Value</a>
         <a href="#pillars" class="px-8 py-4 rounded-xl border-2 border-white/50 hover:bg-white/10 transition-all font-semibold">Learn About Our Services</a>
       </div>
     </div>
